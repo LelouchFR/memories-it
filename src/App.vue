@@ -1,14 +1,18 @@
 <script setup>
     import Card from './components/Card.vue';
+    
+    let images = ['img/Angular.png', 'img/React.png', 'img/Vue.jpg', 'img/Angular.png', 'img/React.png', 'img/Vue.jpg'];
+
+    for (let i = images.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [images[i], images[j]] = [images[j], images[i]];
+    }
+
+    let cardNumbers = ['card1', 'card2', 'card3', 'card4', 'card5', 'card6'];
 </script>
 
 <template>
     <div class="container">
-        <Card Card="card" CardNumber="card1" image="img/Angular.png" title="Angular"/>
-        <Card Card="card" CardNumber="card2" image="img/NodeJs.jpg" title="Node Js"/>
-        <Card Card="card" CardNumber="card3" image="img/Preact.png" title="Preact"/>
-        <Card Card="card" CardNumber="card4" image="img/React.png" title="React"/>
-        <Card Card="card" CardNumber="card5" image="img/Svelte.png" title="Svelte"/>
-        <Card Card="card" CardNumber="card6" image="img/Vue.jpg" title="Vue"/>
+        <Card v-for="(cardNumber, index) in cardNumbers" :key="cardNumber" :Card="'card'" :CardNumber="cardNumber" :image="images[index]" />
     </div>
 </template>

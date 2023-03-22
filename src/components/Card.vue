@@ -1,23 +1,34 @@
-<template>
-    <div :class="Card, CardNumber">
-        <img :src="image" :alt="title">
-        <h3>{{ title }}</h3>
-    </div>
-</template>
-
 <script setup>
-    import { defineProps } from 'vue';
-
     const props = defineProps({
         Card: String,
         CardNumber: String,
         image: String,
-        title: String,
     });
 </script>
 
+<template>
+    <div :class="[Card, CardNumber, { 'flipped': isFlipped }]" @click="flipCard">
+        <div class="front">
+            <img :src="image" alt="image from a JavaScript Framework" draggable="false" />
+        </div>
+        <div class="back">
+            <img src="img/logo.png" alt="back of card" draggable="false" />
+        </div>
+    </div>
+</template>
+
 <script>
-export default {
-  name: 'Card',
-};
+    export default {
+        name: "Card",
+        data() {
+            return {
+                isFlipped: true,
+            };
+        },
+        methods: {
+            flipCard() {
+                this.isFlipped = !this.isFlipped;
+            },
+        },
+    };
 </script>
