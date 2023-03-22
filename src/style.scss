@@ -1,30 +1,35 @@
-body {
-    background-color: #9E643C;
+$P100: 100%;
+$P50: 50%;
+$ROTATION-180: 180deg;
+
+@mixin Grid-Displayer($gtc, $gtr, $gcp, $grp) {
+    grid-template-columns: $gtc;
+    grid-template-rows: $gtr;
+    grid-column-gap: $gcp;
+    grid-row-gap: $grp;
 }
+
+body {background-color: #9E643C}
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 20px;
+    @include Grid-Displayer(repeat(3, 1fr), repeat(2, 1fr), 0px, 20px);
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
+    top: $P50;
+    left: $P50;
+    transform: translate(-$P50);
 
-    .card1 {grid-area: 1 / 1 / 2 / 2}
-    .card2 {grid-area: 1 / 2 / 2 / 3}
-    .card3 {grid-area: 1 / 3 / 2 / 4}
-    .card4 {grid-area: 2 / 1 / 3 / 2}
-    .card5 {grid-area: 2 / 2 / 3 / 3}
-    .card6 {grid-area: 2 / 3 / 3 / 4}
-    .card7 {grid-area: 3 / 1 / 4 / 2}
-    .card8 {grid-area: 3 / 2 / 4 / 3}
-    .card9 {grid-area: 3 / 3 / 4 / 4}
-    .card10 {grid-area: 4 / 1 / 5 / 2}
-    .card11 {grid-area: 4 / 2 / 5 / 3}
-    .card12 {grid-area: 4 / 3 / 5 / 4}
+    $grid-rows: 1 2 3 4;
+    $grid-cols: 1 2 3;
+
+    @each $row in $grid-rows {
+        @each $col in $grid-cols {
+            $card: ".card#{$row}#{$col}";
+            #{$card} {
+                grid-area: #{$row} / #{$col} / #{($row + 1)} / #{($col + 1)};
+            }
+        }
+    }
 
     .card {
         display: flex;
@@ -36,52 +41,52 @@ body {
         border-radius: 5px;
         padding: 20px;
         position: relative;
-        left: 50%;
-        transform: translate(-50%);
+        left: $P50;
+        transform: translate(-$P50);
         transition: transform .5s ease-in-out;
         cursor: pointer;
     
         &.flipped {
-            transform: rotateY(-180deg);
-            transform: translate(-50%);
+            transform: rotateY(-$ROTATION-180);
+            transform: translate(-$P50);
         }
     
         &.back {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: $P100;
+            height: $P100;
             backface-visibility: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: rotateY(180deg);
+            transform: rotateY($ROTATION-180);
         }
     
         .back img {
-            width: 100%;
-            height: 100%;
+            width: $P100;
+            height: $P100;
         }
     
         .front, .back {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: $P100;
+            height: $P100;
             transition: transform .6s;
             backface-visibility: hidden;
         }
     
         .front {transform: rotateY(0deg)}
-        .back {transform: rotateY(180deg)}
-        &.flipped .front {transform: rotateY(-180deg)}
+        .back {transform: rotateY($ROTATION-180)}
+        &.flipped .front {transform: rotateY(-$ROTATION-180)}
         &.flipped .back {transform: rotateY(0deg)}
         
         img {
-            width: 100%;
-            height: 100%;
+            width: $P100;
+            height: $P100;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -91,23 +96,16 @@ body {
 @media (max-width: 750px) {
     .container {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
+        @include Grid-Displayer(repeat(2, 1fr), repeat(5, 1fr), 20px, 20px);
 
-        .card1 { grid-area: 1 / 1 / 2 / 2; }
-        .card2 { grid-area: 1 / 2 / 2 / 3; }
-        .card3 { grid-area: 2 / 1 / 3 / 2; }
-        .card4 { grid-area: 2 / 2 / 3 / 3; }
-        .card5 { grid-area: 3 / 1 / 4 / 2; }
-        .card6 { grid-area: 3 / 2 / 4 / 3; }
-        .card7 { grid-area: 4 / 1 / 5 / 2; }
-        .card8 { grid-area: 4 / 2 / 5 / 3; }
-        .card9 { grid-area: 5 / 1 / 6 / 2; }
-        .card10 { grid-area: 5 / 2 / 6 / 3; }
-        .card11 { grid-area: 6 / 1 / 7 / 2; }
-        .card12 { grid-area: 6 / 2 / 7 / 3; }
+        $grid: ((1, 1, 2, 2), (1, 2, 2, 3), (2, 1, 3, 2), (2, 2, 3, 3), (3, 1, 4, 2), (3, 2, 4, 3), (4, 1, 5, 2), (4, 2, 5, 3), (5, 1, 6, 2), (5, 2, 6, 3), (6, 1, 7, 2), (6, 2, 7, 3));
+
+        @each $row in $grid {
+            $class: ".card#{index($grid, $row)}";
+            #{$class} {
+                grid-area: nth($row, 1) / nth($row, 2) / nth($row, 3) / nth($row, 4);
+            }
+        }
 
         .card {transform: translate(-30%)}
     }
