@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import './styles/mixin.module.scss';
 @import './styles/const.module.scss';
 
-body {background-color: #9E643C}
+body {
+    background-color: #35654D;
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+}
+
+.GameStarter {position: absolute}
 
 .container {
     display: grid;
@@ -39,10 +46,7 @@ body {background-color: #9E643C}
         }
     
         &.back {
-            display: flex;
             position: absolute;
-            align-items: center;
-            justify-content: center;
             @include top-left(0, 0);
             @include width-height($P100, $P100);
             transform: rotateY($ROTATION-180);
@@ -94,3 +98,5 @@ body {background-color: #9E643C}
     }
 
 }
+
+.hide {display: none}

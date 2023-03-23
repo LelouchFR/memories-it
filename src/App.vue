@@ -1,5 +1,6 @@
 <script setup>
     import Card from './components/Card.vue';
+    import Menu from './components/Menu.vue';
     
     let images = ['img/Angular.png', 'img/React.png', 'img/Vue.jpg', 'img/NodeJS.jpg', 'img/Preact.png', 'img/Svelte.png', 'img/Angular.png', 'img/React.png', 'img/Vue.jpg', 'img/NodeJS.jpg', 'img/Preact.png', 'img/Svelte.png'];
 
@@ -12,7 +13,8 @@
 </script>
 
 <template>
-    <div class="container">
+    <Menu id="MenuContainer" />
+    <div class="container hide" id="CardContainer">
         <Card v-for="(cardNumber, index) in cardNumbers" :key="cardNumber" :Card="'card'" :CardNumber="cardNumber" :image="images[index]" />
     </div>
 </template>
