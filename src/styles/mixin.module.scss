@@ -1,0 +1,16 @@
+@mixin Grid-Displayer($gtc, $gtr, $gcp, $grp) {
+    grid-template-columns: $gtc;
+    grid-template-rows: $gtr;
+    grid-column-gap: $gcp;
+    grid-row-gap: $grp;
+}
+
+@mixin top-left($top, $left) {
+    top: $top;
+    left: $left;
+}
+
+@mixin width-height($w, $h) {
+    width: $w;
+    height: $h;
+}

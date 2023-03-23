@@ -47,6 +47,7 @@
         },
         methods: {
             flipCard() {
+                this.isFlipped = !this.isFlipped;
                 CardPair.push(this.image);
                 CardPairTurner.push(this);
                 FlipNums++;
@@ -54,7 +55,6 @@
                     CheckCards(CardPair[0], CardPair[1], CardPairTurner[0], CardPairTurner[1]);
                     FlipNums = 0;
                 }
-                this.isFlipped = !this.isFlipped;
             },
         },
     };
