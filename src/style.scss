@@ -8,7 +8,33 @@ body {
     text-align: center;
 }
 
-.GameStarter {position: absolute}
+.GameStarter {
+    position: fixed;
+    @include width-height($P100, $P100);
+    margin: 0;
+    padding: 0;
+
+    h1 {font-size: 4rem}
+
+    button {
+        position: fixed;
+        width: 300px;
+        height: 150px;
+        border-radius: 10px;
+        border: none;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    p > a {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 20px;
+    }
+}
 
 .container {
     display: grid;
@@ -93,8 +119,7 @@ body {
             }
 
         }
-
-        .card {transform: translate(-30%)}
+        
     }
 
 }
