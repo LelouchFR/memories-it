@@ -36,6 +36,11 @@ body {
     }
 }
 
+.timer {
+    position: fixed;
+    @include top-left(10px, 10px);
+}
+
 .container {
     display: grid;
     position: relative;

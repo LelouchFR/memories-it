@@ -13,7 +13,7 @@
 </script>
 
 <template>
-    <Menu id="MenuContainer" />
+    <Menu />
     <div class="container hide" id="CardContainer">
         <Card v-for="(cardNumber, index) in cardNumbers" :key="cardNumber" :Card="'card'" :CardNumber="cardNumber" :image="images[index]" />
     </div>
