@@ -1,8 +1,8 @@
 <template>
     <section class="GameStarter" id="MenuContainer">
-        <h1>Memory it !</h1>
+        <h1>Memories it !</h1>
         <button @click="Hide_or_Show">Start Playing</button>
-        <p><input type="checkbox" name="timer" id="Timer" @click="speedMod"> speedrun mod</p>
+        <p><input type="checkbox" name="timer" id="Timer" @click="speedrun = !speedrun"> speedrun mod</p>
         <p><a :href="ghLink">&copy; Baptiste Zahnow {{ new Date().getFullYear() }}</a></p>
     </section>
     <p class="timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
@@ -13,6 +13,7 @@
     let counter = 0;
     let seconds = 0; 
     let tens = 0; 
+    let speedrun = false;
     let Interval;
 
     function Hide_or_Show() {
@@ -24,6 +25,8 @@
             document.getElementById('CardContainer').classList.remove('hide');
             document.getElementById('MenuContainer').classList.add('hide');
         }
+
+        if (speedrun) speedMod();
     }
 
     function speedMod() {    

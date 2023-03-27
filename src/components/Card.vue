@@ -20,6 +20,7 @@
 <script>
     let FlipNums = 0;
     let foundPairs = 0;
+    let resultPairs = [];
     let CardPair = [];
     let CardPairTurner = [];
 
@@ -30,6 +31,7 @@
     function CheckCards(FirstCard, SecondCard, firstTurn, secondTurn) {
         if (FirstCard === SecondCard) {
             foundPairs++;
+            resultPairs.push([FirstCard, SecondCard]);
         } else {
             firstTurn.isFlipped = !firstTurn.isFlipped;
             secondTurn.isFlipped = !secondTurn.isFlipped;
