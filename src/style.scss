@@ -64,10 +64,8 @@ body {
         justify-content: center;
         flex-direction: column;
         left: $P50;
-        @include width-height(200px, 250px);
+        @include width-height(250px, 250px);
         transform: translate(-$P50);
-        border-radius: 5px;
-        padding: 20px;
         transition: transform .5s ease-in-out;
         cursor: pointer;
     
