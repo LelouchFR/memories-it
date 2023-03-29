@@ -18,26 +18,36 @@
 </template>
 
 <script>
-    let FlipNums = 0;
-    let foundPairs = 0;
-    let resultPairs = [];
-    let CardPair = [];
-    let CardPairTurner = [];
+    let FlipNums = 0, foundPairs = 0;
+    let resultPairs = [], correctResultPars = [], CardPair = [], CardPairTurner = [];
+    let resultChecker = [
+        ['img/Angular.png', 'img/Angular.png'],
+        ['img/React.png', 'img/React.png'],
+        ['img/Vue.jpg', 'img/Vue.jpg'],
+        ['img/NodeJS.jpg', 'img/NodeJS.jpg'],
+        ['img/Preact.png', 'img/Preact.png'],
+        ['img/Svelte.png', 'img/Svelte.png']
+    ];
+    let youWon = false;
 
     function wait(time) {
-        return new Promise(resolve => {setTimeout(resolve, time)});
+        return new Promise(resolve => setTimeout(resolve, time));
     }
 
     function CheckCards(FirstCard, SecondCard, firstTurn, secondTurn) {
         if (FirstCard === SecondCard) {
             foundPairs++;
             resultPairs.push([FirstCard, SecondCard]);
+            for (let i = 0; i < resultChecker.length; i++) {
+                if (!resultChecker.includes(resultPairs[i]) && resultPairs.length === resultChecker.length) {
+                    youWon = true;
+                }
+            }
         } else {
             firstTurn.isFlipped = !firstTurn.isFlipped;
             secondTurn.isFlipped = !secondTurn.isFlipped;
         }
-        CardPair = [];
-        CardPairTurner = [];
+        CardPair = [], CardPairTurner = [];
     }
     
     export default {
