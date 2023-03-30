@@ -28,6 +28,7 @@
         ['img/Preact.png', 'img/Preact.png'],
         ['img/Svelte.png', 'img/Svelte.png']
     ];
+
     let youWon = false;
 
     function wait(time) {
@@ -47,6 +48,8 @@
             firstTurn.isFlipped = !firstTurn.isFlipped;
             secondTurn.isFlipped = !secondTurn.isFlipped;
         }
+
+        if(youWon) console.log("You Won");
         CardPair = [], CardPairTurner = [];
     }
     
