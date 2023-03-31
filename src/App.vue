@@ -2,7 +2,7 @@
     import Card from './components/Card.vue';
     import Menu from './components/Menu.vue';
     
-    let images = ['img/Angular.png', 'img/React.png', 'img/Vue.jpg', 'img/NodeJS.jpg', 'img/Preact.png', 'img/Svelte.png', 'img/Angular.png', 'img/React.png', 'img/Vue.jpg', 'img/NodeJS.jpg', 'img/Preact.png', 'img/Svelte.png'];
+    let images = ['img/paire1.png', 'img/paire2.png', 'img/paire3.png', 'img/paire4.png', 'img/paire5.png', 'img/paire6.png', 'img/paire1.png', 'img/paire2.png', 'img/paire3.png', 'img/paire4.png', 'img/paire5.png', 'img/paire6.png'];
 
     for (let i = images.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

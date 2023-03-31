@@ -12,41 +12,37 @@
             <img :src="image" alt="image from a JavaScript Framework" draggable="false" />
         </div>
         <div class="back">
-            <img src="img/placeholder.png" alt="back of card" draggable="false" />
+            <img src="img/back.png" alt="back of card" draggable="false" />
         </div>
     </div>
 </template>
 
 <script>
     let FlipNums = 0, foundPairs = 0;
-    let resultPairs = [], correctResultPars = [], CardPair = [], CardPairTurner = [];
+    let resultPairs = [], correctResultPairs = [], CardPair = [], CardPairTurner = [];
     let resultChecker = [
-        ['img/Angular.png', 'img/Angular.png'],
-        ['img/React.png', 'img/React.png'],
-        ['img/Vue.jpg', 'img/Vue.jpg'],
-        ['img/NodeJS.jpg', 'img/NodeJS.jpg'],
-        ['img/Preact.png', 'img/Preact.png'],
-        ['img/Svelte.png', 'img/Svelte.png']
+        ['img/paire1.png', 'img/paire1.png'],
+        ['img/paire2.png', 'img/paire2.png'],
+        ['img/paire3.png', 'img/paire3.png'],
+        ['img/paire4.png', 'img/paire4.png'],
+        ['img/paire5.png', 'img/paire5.png'],
+        ['img/paire6.png', 'img/paire6.png']
     ];
 
     let youWon = false;
-
-    function wait(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
 
     function CheckCards(FirstCard, SecondCard, firstTurn, secondTurn) {
         if (FirstCard === SecondCard) {
             foundPairs++;
             resultPairs.push([FirstCard, SecondCard]);
-            for (let i = 0; i < resultChecker.length; i++) {
-                if (!resultChecker.includes(resultPairs[i]) && resultPairs.length === resultChecker.length) {
+            for (let i = 0; i < resultChecker.length; i++)
+                if (!resultChecker.includes(resultPairs[i]) && resultPairs.length === resultChecker.length)
                     youWon = true;
-                }
-            }
         } else {
-            firstTurn.isFlipped = !firstTurn.isFlipped;
-            secondTurn.isFlipped = !secondTurn.isFlipped;
+            setTimeout(() => {
+                secondTurn.isFlipped = !secondTurn.isFlipped;
+                firstTurn.isFlipped = !firstTurn.isFlipped;
+            }, 750);
         }
 
         if(youWon) console.log("You Won");
