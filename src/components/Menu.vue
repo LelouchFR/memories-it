@@ -2,8 +2,8 @@
     <section class="GameStarter" id="MenuContainer">
         <h1>Memories it !</h1>
         <button @click="Hide_or_Show">Start Playing</button>
-        <p><input type="checkbox" name="timer" id="Timer" @click="speedrun = !speedrun"> speedrun mod</p>
-        <p><a :href="ghLink">&copy; Baptiste Zahnow {{ new Date().getFullYear() }}</a></p>
+        <p><input type="checkbox" name="timer" id="Timer" @click="speedrun = !speedrun"> speedrun mode</p>
+        <p><a :href="ghLink">&copy; Baptiste & Anna Zahnow {{ new Date().getFullYear() }}</a></p>
     </section>
     <p class="timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
 </template>
