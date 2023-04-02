@@ -2,6 +2,8 @@
 @import './styles/mixin.module.scss';
 @import './styles/const.module.scss';
 
+* {cursor: url('./cursors/cursor.png'), auto}
+
 body {
     background-color: #6269d5;
     font-family: 'Montserrat Alternates', sans-serif;
