@@ -12,7 +12,7 @@
             <img :src="image" alt="image from a JavaScript Framework" draggable="false" />
         </div>
         <div class="back">
-            <img src="img/back.png" alt="back of card" draggable="false" />
+            <img src="/img/back.png" alt="back of card" draggable="false" />
         </div>
     </div>
 </template>
